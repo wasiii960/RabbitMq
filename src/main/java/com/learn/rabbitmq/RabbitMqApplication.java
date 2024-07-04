@@ -22,8 +22,10 @@ public class RabbitMqApplication {
 		json.put("to_date","02-02-2001");
 		json.put("email","xyz@gmail.com");
 		publisher.publishJsonMessage(json);
+		publisher.publishMessageUsingDirectExchange("Hello to the real world","mobile");
 		Consumer consumer = new Consumer();
 		consumer.consumeMessage();
+		consumer.consumeMessage("Mobile");
 	}
 
 }

@@ -23,4 +23,9 @@ public class Publisher {
         Channel channel = connection.createChannel();
         channel.basicPublish("","Queue-1",null,json.toString().getBytes());
     }
+    public void publishMessageUsingDirectExchange(String message, String routingKey) throws IOException, TimeoutException {
+        QueueConnection connection = new QueueConnection();
+        Channel channel = connection.createChannel();
+        channel.basicPublish("TestDirectExchange",routingKey,null,message.toString().getBytes());
+    }
 }
