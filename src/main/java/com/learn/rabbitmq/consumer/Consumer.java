@@ -23,4 +23,14 @@ public class Consumer {
         };
         channel.basicConsume("Queue-1",true,deliverCallback,consumerTag -> {});
     }
+
+    public void consumeMessage(String queueName) throws IOException, TimeoutException {
+        QueueConnection queueConnection = new QueueConnection();
+        Channel channel = queueConnection.createChannel();
+        DeliverCallback deliverCallback = (consumerTag,delivery)->{
+            String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
+            System.out.println(message);
+        };
+        channel.basicConsume(queueName,true,deliverCallback,consumerTag -> {});
+    }
 }
