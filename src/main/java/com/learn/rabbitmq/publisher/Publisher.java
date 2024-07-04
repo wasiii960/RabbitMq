@@ -28,4 +28,9 @@ public class Publisher {
         Channel channel = connection.createChannel();
         channel.basicPublish("TestDirectExchange",routingKey,null,message.toString().getBytes());
     }
+    public void publishMessageUsingFanOutExchange(String message, String routingKey) throws IOException, TimeoutException {
+        QueueConnection connection = new QueueConnection();
+        Channel channel = connection.createChannel();
+        channel.basicPublish("TestFanOutExchange","",null,message.toString().getBytes());
+    }
 }
