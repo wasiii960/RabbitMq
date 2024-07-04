@@ -23,9 +23,11 @@ public class RabbitMqApplication {
 		json.put("email","xyz@gmail.com");
 		publisher.publishJsonMessage(json);
 		publisher.publishMessageUsingDirectExchange("Hello to the real world","mobile");
+		publisher.publishMessageUsingFanOutExchange("Hello to the real world","");
 		Consumer consumer = new Consumer();
 		consumer.consumeMessage();
 		consumer.consumeMessage("Mobile");
+
 	}
 
 }
