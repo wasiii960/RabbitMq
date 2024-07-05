@@ -24,6 +24,7 @@ public class RabbitMqApplication {
 		publisher.publishJsonMessage(json);
 		publisher.publishMessageUsingDirectExchange("Hello to the real world","mobile");
 		publisher.publishMessageUsingFanOutExchange("Hello to the real world","");
+		publisher.publishMessageUsingTopicExchange("Hello from topic exchange","tv.mobile.tv");
 		Consumer consumer = new Consumer();
 		consumer.consumeMessage();
 		consumer.consumeMessage("Mobile");

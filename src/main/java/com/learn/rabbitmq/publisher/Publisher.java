@@ -33,4 +33,9 @@ public class Publisher {
         Channel channel = connection.createChannel();
         channel.basicPublish("TestFanOutExchange","",null,message.toString().getBytes());
     }
+    public void publishMessageUsingTopicExchange(String message, String key) throws IOException, TimeoutException {
+        QueueConnection connection = new QueueConnection();
+        Channel channel = connection.createChannel();
+        channel.basicPublish("TestTopicExchange",key,null,message.toString().getBytes());
+    }
 }
